@@ -19,7 +19,6 @@ target/
 *.DS_Store
 
 # Local Model Files
-/model/
 *.bin
 *.model
 massive_test_corpus.txt
