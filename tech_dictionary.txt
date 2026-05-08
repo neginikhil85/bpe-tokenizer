@@ -1,0 +1,42 @@
+--- JAVA/BACKEND KEYWORDS ---
+public private protected static final synchronized volatile transient native strictfp
+class interface enum extends implements package import
+byte short int long float double boolean char void
+if else switch case default while do for break continue return throw throws try catch finally
+new instanceof this super
+abstract final native synchronized transient volatile
+true false null
+String Integer Long Double Float Boolean Character Byte Short Object Class System
+List ArrayList LinkedList Set HashSet TreeSet Map HashMap TreeMap
+Exception RuntimeException IOException SQLException
+Spring Boot Autowired Service Controller Repository Component Configuration Bean
+Stream Filter Collect Map FlatMap Reduce Optional
+Request Response Header Cookie Session Context
+Authentication Authorization Security Token JWT
+Middleware Interceptor Filter Listener Handler
+Transformation Validation Sanitization Encryption Decryption
+Database Transaction Query Schema Index Migration
+Kafka Producer Consumer Topic Partition Offset
+Redis Cache Key Value Expire Cluster
+Docker Container Image Registry Volume
+Kubernetes Pod Deployment Service Ingress ConfigMap
+AWS S3 Lambda EC2 CloudFront DynamoDB
+Metrics Tracing Logging Monitoring Alerting
+Endpoint Path Method Status Payload Metadata
+Idempotency Consistency Availability PartitionTolerance
+CamelCase PascalCase SnakeCase KebabCase
+--- REPEATED FOR WEIGHT ---
+Authentication Authentication Authentication Authentication Authentication
+Middleware Middleware Middleware Middleware Middleware
+Transformation Transformation Transformation Transformation Transformation
+Implementation Implementation Implementation Implementation Implementation
+Configuration Configuration Configuration Configuration Configuration
+AuthenticationMiddleware AuthenticationMiddleware AuthenticationMiddleware
+MiddlewareInterface MiddlewareInterface MiddlewareInterface
+ResponseHandler ResponseHandler ResponseHandler
+IdempotencyKey IdempotencyKey IdempotencyKey
+KafkaConsumer KafkaConsumer KafkaConsumer
+SpringBoot SpringBoot SpringBoot
+Controller Controller Controller
+Service Service Service
+Repository Repository Repository

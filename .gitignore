@@ -1,0 +1,25 @@
+# Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+*.swp
+*.DS_Store
+
+# Local Model Files
+model/
+*.bin
+*.model
+massive_test_corpus.txt

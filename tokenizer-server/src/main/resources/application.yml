@@ -1,0 +1,7 @@
+tokenizer:
+  dev-ui:
+    enabled: false
+    path: /internal/tokenizer
+
+server:
+  port: 8080
