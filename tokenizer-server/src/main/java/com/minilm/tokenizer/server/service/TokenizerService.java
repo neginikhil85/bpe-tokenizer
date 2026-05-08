@@ -5,6 +5,7 @@ import com.minilm.tokenizer.core.tokenizers.impl.BPETokenizer;
 import com.minilm.tokenizer.core.tokenizers.model.TokenPiece;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.PostConstruct;
@@ -19,17 +20,24 @@ import java.util.List;
 @Service
 public class TokenizerService {
     private static final Logger logger = LoggerFactory.getLogger(TokenizerService.class);
+    
+    @Value("${tokenizer.model-path:../model}")
+    private String modelPath;
+
     private BPETokenizer tokenizer;
 
     @PostConstruct
     public void init() {
         try {
-            // Default load path for local development
-            if (Files.exists(Paths.get("model"))) {
-                tokenizer = BPE.load("model");
+            logger.info("Initializing TokenizerService with model at: {}", modelPath);
+            if (Files.exists(Paths.get(modelPath))) {
+                tokenizer = BPE.load(modelPath);
+                logger.info("Successfully loaded BPE model from {}", modelPath);
+            } else {
+                logger.warn("Model path {} does not exist. Tokenizer will not be available.", modelPath);
             }
         } catch (IOException e) {
-            logger.error("Failed to load default model during initialization", e);
+            logger.error("Failed to load model from " + modelPath, e);
         }
     }
 
@@ -50,7 +58,7 @@ public class TokenizerService {
 
     private void validateModel() {
         if (tokenizer == null) {
-            throw new IllegalStateException("Tokenizer model is not loaded.");
+            throw new IllegalStateException("Tokenizer model is not loaded. Please check the model path: " + modelPath);
         }
     }
 

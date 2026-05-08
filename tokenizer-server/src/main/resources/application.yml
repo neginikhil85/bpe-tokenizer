@@ -1,6 +1,7 @@
 tokenizer:
+  model-path: ../model
   dev-ui:
-    enabled: false
+    enabled: true
     path: /internal/tokenizer
 
 server:
