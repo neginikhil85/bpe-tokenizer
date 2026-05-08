@@ -21,7 +21,7 @@ import java.util.List;
 public class TokenizerService {
     private static final Logger logger = LoggerFactory.getLogger(TokenizerService.class);
     
-    @Value("${tokenizer.model-path:../model}")
+    @Value("${tokenizer.model-path:}")
     private String modelPath;
 
     private BPETokenizer tokenizer;
@@ -29,15 +29,24 @@ public class TokenizerService {
     @PostConstruct
     public void init() {
         try {
-            logger.info("Initializing TokenizerService with model at: {}", modelPath);
-            if (Files.exists(Paths.get(modelPath))) {
-                tokenizer = BPE.load(modelPath);
-                logger.info("Successfully loaded BPE model from {}", modelPath);
-            } else {
-                logger.warn("Model path {} does not exist. Tokenizer will not be available.", modelPath);
+            // 1. Try loading from custom filesystem path if provided
+            if (modelPath != null && !modelPath.isEmpty()) {
+                logger.info("Attempting to load custom model from filesystem: {}", modelPath);
+                if (Files.exists(Paths.get(modelPath))) {
+                    tokenizer = BPE.load(modelPath);
+                    logger.info("Successfully loaded custom BPE model from {}", modelPath);
+                    return;
+                }
+                logger.warn("Custom model path {} not found. Falling back to default.", modelPath);
             }
+
+            // 2. Fallback to default model bundled in resources
+            logger.info("Loading default model from classpath resources (/model)");
+            tokenizer = BPE.loadFromResources("/model");
+            logger.info("Successfully loaded default BPE model from resources.");
+            
         } catch (IOException e) {
-            logger.error("Failed to load model from " + modelPath, e);
+            logger.error("Failed to load any BPE model. Tokenizer will be unavailable.", e);
         }
     }
 
@@ -58,7 +67,7 @@ public class TokenizerService {
 
     private void validateModel() {
         if (tokenizer == null) {
-            throw new IllegalStateException("Tokenizer model is not loaded. Please check the model path: " + modelPath);
+            throw new IllegalStateException("Tokenizer model is not loaded. Please check your configuration.");
         }
     }
 

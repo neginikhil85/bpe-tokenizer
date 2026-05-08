@@ -1,5 +1,6 @@
 tokenizer:
-  model-path: ../model
+  # Leave model-path empty to use the default model bundled in resources
+  model-path: 
   dev-ui:
     enabled: true
     path: /internal/tokenizer
