@@ -1,5 +1,8 @@
-# Mini-LM BPE Tokenizer
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org)
+[![Java](https://img.shields.io/badge/Java-17%2B-orange?logo=openjdk)](https://www.oracle.com/java/)
+[![Build](https://img.shields.io/badge/Build-Passing-brightgreen)]()
 
+# Mini-LM BPE Tokenizer
 A production-grade, JVM-native Byte Pair Encoding (BPE) tokenizer library optimized for **Source Code** and **Multilingual (Hinglish)** workloads.
 
 ## 🚀 Why Mini-LM Tokenizer?
